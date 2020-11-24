@@ -1,1 +1,1 @@
-lesson-1:react 初始化设置
+lesson-2:react-bootstrap , Header&Footer 组件
