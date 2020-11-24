@@ -1,1 +1,1 @@
-lesson-3:HomeScreen 产品列表组件
+lesson-4:评分组件
