@@ -21,7 +21,7 @@ const products = [
     brand: '苹果',
     category: '电子产品',
     price: 6799,
-    countInStock: 7,
+    countInStock: 6,
     rating: 4.0,
     numReviews: 5,
   },
