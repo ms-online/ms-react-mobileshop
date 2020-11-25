@@ -1,0 +1,22 @@
+{
+  "name": "mobileshop",
+  "version": "1.0.0",
+  "description": "lesson-7:前后端工作流",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ms-online/ms-react-mobileshop.git"
+  },
+  "author": "ms-online",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ms-online/ms-react-mobileshop/issues"
+  },
+  "homepage": "https://github.com/ms-online/ms-react-mobileshop#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
