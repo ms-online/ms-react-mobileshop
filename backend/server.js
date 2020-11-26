@@ -2,6 +2,7 @@ import express from 'express'
 import products from './data/products.js'
 import connectDB from './config/db.js'
 import dotenv from 'dotenv'
+import colors from 'colors'
 
 dotenv.config()
 connectDB()
@@ -22,5 +23,7 @@ const PORT = process.env.PORT || 5000
 
 app.listen(
   PORT,
-  console.log(`服务器正在${process.env.NODE_ENV}模式下的${PORT}端口号运行`)
+  console.log(
+    `服务器正在${process.env.NODE_ENV}模式下的${PORT}端口号运行`.yellow.bold
+  )
 )
