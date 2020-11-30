@@ -1,4 +1,1 @@
-lesson-22:关于 redux
-
-文档：
-https://www.redux.org.cn/
+lesson-23:创建 redux store
