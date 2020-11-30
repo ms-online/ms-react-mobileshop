@@ -2,6 +2,7 @@ import express from 'express'
 import connectDB from './config/db.js'
 import dotenv from 'dotenv'
 import colors from 'colors'
+import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 
 import productRoutes from './routes/productRoutes.js'
 
@@ -14,6 +15,11 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/products', productRoutes)
+
+app.use(notFound)
+
+//自定义错误处理中间件
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000
 

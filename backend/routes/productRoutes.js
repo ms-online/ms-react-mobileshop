@@ -25,7 +25,8 @@ router.get(
     if (product) {
       res.json(product)
     } else {
-      res.status(404).json({ message: '查找不到该产品！' })
+      res.status(404)
+      throw new Error('产品查询不到！')
     }
   })
 )
