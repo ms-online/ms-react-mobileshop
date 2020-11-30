@@ -1,1 +1,1 @@
-lesson-26:创建 loader 组件&alert 组件
+lesson-27:单个产品 reducer&action
