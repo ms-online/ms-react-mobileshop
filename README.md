@@ -1,1 +1,4 @@
-lesson-21:自定义错误处理机制
+lesson-22:关于 redux
+
+文档：
+https://www.redux.org.cn/
