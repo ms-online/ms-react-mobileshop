@@ -13,13 +13,92 @@ const CartScreen = ({ match, location, history }) => {
 
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
-  console.log(cartItems)
+  //   console.log(cartItems)
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty))
     }
   }, [dispatch, productId, qty])
-  return <div>购物车页面</div>
+
+  //删除购物车中的产品
+  const removFromCartHandler = (id) => {
+    console.log('删除产品')
+  }
+  //支付函数
+  const checkoutHandler = () => {
+    history.push('/login?redirect=shopping')
+  }
+  return (
+    <Row>
+      <Col md={8}>
+        <ListGroup variant='flush'>
+          {cartItems.map((item) => (
+            <ListGroup.Item key={item.product}>
+              <Row>
+                <Col md={2}>
+                  <Image src={item.image} alt={item.name} fluid rounded />
+                </Col>
+                <Col md={3}>
+                  <Link to={`/product/${item.product}`}>{item.name}</Link>
+                </Col>
+                <Col md={2}>¥{item.price}</Col>
+                <Col md={2}>
+                  <Form.Control
+                    as='select'
+                    value={item.qty}
+                    onChange={(e) =>
+                      dispatch(addToCart(item.product, Number(e.target.value)))
+                    }
+                  >
+                    {[...Array(item.countInStock).keys()].map((x) => (
+                      <option key={x + 1} value={x + 1}>
+                        {x + 1}
+                      </option>
+                    ))}
+                  </Form.Control>
+                </Col>
+                <Col md={2}>
+                  <Button
+                    type='button'
+                    variant='light'
+                    onClick={() => removFromCartHandler(item.product)}
+                  >
+                    <i className='fas fa-trash'></i>
+                  </Button>
+                </Col>
+              </Row>
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
+      </Col>
+      <Col md={4}>
+        <Card>
+          <ListGroup variant='flush'>
+            <ListGroup.Item>
+              <h2>
+                产品总数：{cartItems.reduce((acc, item) => acc + item.qty, 0)}{' '}
+                个
+              </h2>
+              ¥
+              {cartItems
+                .reduce((acc, item) => acc + item.qty * item.price, 0)
+                .toFixed(2)}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Button
+                type='button'
+                className='btn-block'
+                disabled={cartItems.length === 0}
+                onClick={checkoutHandler}
+              >
+                去支付
+              </Button>
+            </ListGroup.Item>
+          </ListGroup>
+        </Card>
+      </Col>
+    </Row>
+  )
 }
 
 export default CartScreen
