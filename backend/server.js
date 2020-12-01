@@ -5,16 +5,20 @@ import colors from 'colors'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 
 import productRoutes from './routes/productRoutes.js'
+import userRouters from './routes/userRouter.js'
 
 dotenv.config()
 connectDB()
 const app = express()
+
+app.use(express.json())
 
 app.get('/', (req, res) => {
   res.send('API正在运行......')
 })
 
 app.use('/api/products', productRoutes)
+app.use('/api/users', userRouters)
 
 app.use(notFound)
 
